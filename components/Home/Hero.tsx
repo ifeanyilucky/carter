@@ -1,60 +1,26 @@
 import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 import gsap from 'gsap';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, BackgroundSpiral } from './icons';
+import { ArrowLeft, ArrowRight, BackgroundSpiral } from '../icons';
 
-export default function Hero() {
+export default function Hero({ posts }) {
   const [current, setCurrent] = useState(0);
   const [fade, setFade] = useState(1);
-  const blogposts = [
-    {
-      title: 'An American Anti-Testament',
+
+  const blogposts = posts.map((post, index: number) => {
+    return {
+      title: post.title,
       postedBy: {
-        name: 'Kennedy Williams',
+        name: 'Ifeanyi Lucky',
         image:
           'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
       },
-      image:
-        'https://images.unsplash.com/photo-1667640962803-eb6b1f606f48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      id: '001',
-    },
-    {
-      title: 'The moments we never want to forget',
-      postedBy: {
-        name: 'Klint Williams',
-        image:
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      },
-
-      image:
-        'https://images.unsplash.com/photo-1665686377065-08ba896d16fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      id: '002',
-    },
-    {
-      title: 'A photograph meaning a memory a feel',
-      postedBy: {
-        name: 'John Bowel',
-        image:
-          'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      },
-      image:
-        'https://images.unsplash.com/photo-1659535832621-4ef57c0e141b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80',
-      id: '003',
-    },
-    {
-      title: 'Summer days - Black + White',
-      postedBy: {
-        name: 'John Bowel',
-        image:
-          'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      },
-      image:
-        'https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      id: '004',
-    },
-  ];
-
+      image: post.mainImage,
+      id: `00${index + 1}`,
+    };
+  });
   const slideNext = () => {
     setCurrent((c) => {
       if (c === blogposts.length - 1) {
@@ -85,14 +51,15 @@ export default function Hero() {
 
   useEffect(() => {
     const blogContent = document.querySelector('.blog-content');
-    console.log(blogContent);
+
     resetTimeout();
     timeoutRef.current = setTimeout(() => {
       setCurrent((c) => {
-        if (c === 0) {
-          return blogposts.length - 1;
+        blogContent?.classList.add('fade-in-left');
+        if (c === blogposts.length - 1) {
+          return 0;
         } else {
-          return c - 1;
+          return c + 1;
         }
       });
     }, 2500);
@@ -106,12 +73,14 @@ export default function Hero() {
       <div className='row'>
         <div className='col'>
           <div
-            className={`blog-content ${current ? 'fade-in-left' : ''}`}
+            className={`blog-content`}
             fade={fade}
             onAnimationEnd={() => setFade(0)}
           >
             <p>BLOG {blogposts[current].id}</p>
-            <h1 className='font-h1'>{blogposts[current].title}</h1>
+            <h1 className='font-h1'>
+              {_.truncate(blogposts[current].title, { length: 30 })}
+            </h1>
             <div className='link-with-arrow'>
               <Link href={`library/${blogposts[current].id}`} className='link'>
                 Read More
@@ -172,7 +141,6 @@ const Wrapper = styled.div`
         overflow: hidden;
         max-width: 100%;
         object-fit: cover;
-        object-position: ;
       }
       .ctrl {
         display: flex;
@@ -189,7 +157,7 @@ const Wrapper = styled.div`
         justify-content: space-around;
         height: 430px;
 
-        .postedBy {
+        /* .postedBy {
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -209,7 +177,7 @@ const Wrapper = styled.div`
               border: 1.5px solid #fff;
             }
           }
-        }
+        } */
       }
       .fade-in-left {
         transition: ease 1000ms;
@@ -221,15 +189,9 @@ const Wrapper = styled.div`
       }
     }
 
-    @media (max-width: 992px) {
-      flex-flow: column-reverse;
-      .col {
-        width: 100%;
-        .img-wrapper {
-          height: 300px;
-          width: 100%;
-        }
-      }
+    .img-wrapper {
+      height: 300px;
+      width: 100%;
     }
   }
   @keyframes fadeInLeft {

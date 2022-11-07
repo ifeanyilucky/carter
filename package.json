@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^2.0.0",
+    "@sanity/client": "^3.4.1",
+    "@sanity/image-url": "^1.0.1",
+    "groq": "^2.33.2",
     "gsap": "^3.11.3",
     "lodash": "^4.17.21",
     "next": "13.0.2",
+    "next-sanity": "^1.0.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^5.3.6"
