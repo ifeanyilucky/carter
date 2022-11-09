@@ -11,7 +11,7 @@ export default function BlogpostSection({ posts }) {
         <div className='post-row'>
           {posts?.slice(0, 8)?.map((post, index) => (
             <div className='post-item' key={index}>
-              <Link href={post.slug.current}>
+              <Link href={`blog/${post.slug.current}`}>
                 <BlogCard post={post} />
               </Link>{' '}
             </div>

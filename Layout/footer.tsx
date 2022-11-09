@@ -1,21 +1,36 @@
 import styled from 'styled-components';
+import { BackgroundSpiral } from '../components/icons';
 
 export default function Footer() {
   return (
     <Wrapper>
-      <div className='footerRow'>
-        <div className='footerCol'>
-          <h3>The Art Blog</h3>
-          <div className='item-col'>
-            <p>Library</p>
-            <ul>
-              <li>Artist</li>
-              <li>Tech</li>
-            </ul>
+      <div className='container'>
+        <div className='footerRow'>
+          <img
+            src='/images/footer/streamline.svg'
+            alt='streamline'
+            className='streamline'
+          />
+          <div className='footerCol'>
+            <h2>The Art Blog</h2>
+            <div className='item__row'>
+              <div className='item-col'>
+                <p>Library</p>
+                <div className='footer-item'>Artist</div>
+                <div className='footer-item'>Tech</div>
+                <p className='text-muted'>Copyright &copy; 2023 Carter</p>
+                <p className='text-muted'>Made with 💚 by Codack</p>
+              </div>
+              <div className='item-col'>
+                <p>Company</p>
+                <div className='footer-item'>About us</div>
+                <div className='footer-item'>Contact us</div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className='footerCol'>
-          <h2>Carter</h2>
+          <div className='footerCol'>
+            <h1>Carter.</h1>
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -23,14 +38,40 @@ export default function Footer() {
 }
 
 const Wrapper = styled.footer`
-  background-color: #000;
+  background-color: #0d3b66;
   color: #fff;
   padding: 5rem 0;
   .footerRow {
     display: flex;
     flex-flow: row;
     justify-content: space-around;
-    .footerCol {
+    align-items: center;
+    @media (max-width: 786px) {
+      flex-flow: column-reverse;
     }
+    .footerCol {
+      position: relative;
+
+      .item__row {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+
+        .item-col {
+          p {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+  .streamline {
+    display: block;
+    bottom: 0px;
+    width: 45%;
+    height: 100%;
+    position: absolute;
+    left: 80px;
+    z-index: 999;
   }
 `;

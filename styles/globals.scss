@@ -65,6 +65,7 @@ a {
 .container {
   padding: 0 15px;
   margin: 0 auto;
+  position: relative;
   @media (min-width: 768px) {
     width: 750px;
   }
@@ -78,6 +79,9 @@ a {
 .logo {
   font-family: $secondary-font;
   font-size: 32px;
+}
+strong {
+  font-weight: 400;
 }
 // @media (prefers-color-scheme: dark) {
 //   html {
