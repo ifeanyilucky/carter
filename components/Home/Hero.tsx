@@ -4,6 +4,7 @@ import _ from 'lodash';
 import gsap from 'gsap';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BackgroundSpiral } from '../icons';
+import { urlForImage } from '../../lib/sanity';
 
 export default function Hero({ posts }) {
   const [current, setCurrent] = useState(0);
@@ -19,6 +20,7 @@ export default function Hero({ posts }) {
       },
       image: post.mainImage,
       id: `00${index + 1}`,
+      slug: post.slug.current,
     };
   });
   const slideNext = () => {
@@ -72,32 +74,36 @@ export default function Hero({ posts }) {
       <BackgroundSpiral />
       <div className='row'>
         <div className='col'>
-          <div
-            className={`blog-content`}
-            fade={fade}
-            onAnimationEnd={() => setFade(0)}
-          >
-            <p>BLOG {blogposts[current].id}</p>
-            <h1 className='font-h1'>
-              {_.truncate(blogposts[current].title, { length: 30 })}
-            </h1>
-            <div className='link-with-arrow'>
-              <Link href={`library/${blogposts[current].id}`} className='link'>
-                Read More
-              </Link>
-              <ArrowRight />
-            </div>
-            <div className='postedBy'>
-              <div className='user-profile'>
-                <img
-                  src={blogposts[current].postedBy.image}
-                  alt={blogposts[current].postedBy.name}
-                  className='user-img'
-                />
+          {!blogposts || !blogposts.length ? (
+            'loading'
+          ) : (
+            <div
+              className={`blog-content`}
+              fade={fade}
+              onAnimationEnd={() => setFade(0)}
+            >
+              <p>BLOG {blogposts[current].id}</p>
+              <h1 className='font-h1'>
+                {_.truncate(blogposts[current].title, { length: 30 })}
+              </h1>
+              <div className='link-with-arrow'>
+                <Link href={blogposts[current].slug} className='link'>
+                  Read More
+                </Link>
+                <ArrowRight />
               </div>
-              <p>{blogposts[current].postedBy.name}</p>
+              <div className='postedBy'>
+                <div className='user-profile'>
+                  <img
+                    src={blogposts[current].postedBy.image}
+                    alt={blogposts[current].postedBy.name}
+                    className='user-img'
+                  />
+                </div>
+                <p>{blogposts[current].postedBy.name}</p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div className='col'>
           <div
@@ -105,11 +111,15 @@ export default function Hero({ posts }) {
             onAnimationEnd={() => setFade(0)}
             fade={fade}
           >
-            <img
-              src={blogposts[current].image}
-              alt={blogposts[current].title}
-              className='featured-img'
-            />
+            {!blogposts ? (
+              'loading'
+            ) : (
+              <img
+                src={urlForImage(blogposts[current].image)}
+                alt={blogposts[current].title}
+                className='featured-img'
+              />
+            )}
           </div>
           <div className='ctrl'>
             <button className='arrow-btn' onClick={slideBack}>

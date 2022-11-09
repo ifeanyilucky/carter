@@ -4,6 +4,12 @@ $primary-font: 'DM Sans', sans-serif;
 $secondary-font: 'DM Serif Display', serif;
 $font-md: 73px;
 $font-sm: 32px;
+$font-h1: 4.61rem;
+$font-h2: 3.4rem;
+$font-h3: 1.5rem;
+$font-h4: 1.25rem;
+$font-h5: 1rem;
+$font-p: 0.876rem;
 $primary-color: #0d3b66;
 
 html,
@@ -21,6 +27,24 @@ h6 {
   font-family: $secondary-font;
   font-weight: 400;
 }
+h1 {
+  font-size: $font-h1;
+  margin: 0;
+}
+h2 {
+  font-size: $font-h2;
+  margin: 0;
+}
+h3 {
+  font-size: $font-h3;
+}
+h4 {
+  font-size: $font-h4;
+}
+h5 {
+  font-size: $font-h5;
+}
+
 .font-h1 {
   font-size: $font-md;
   line-height: 1;
@@ -94,10 +118,16 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
+  margin: 12px 0 0 12px;
+
+  .col {
+    margin: 15px;
+  }
   @media (max-width: 992px) {
     flex-flow: column-reverse;
     .col {
-      width: 100%;
+      width: calc(100% - 12px);
     }
   }
 }
@@ -149,4 +179,20 @@ a {
 
   padding: 10px;
   flex: 1 1 auto;
+}
+.brand-sign {
+  margin: 0px auto;
+  width: 80%;
+  height: auto;
+  display: block;
+}
+
+.primary-btn {
+  background-color: $primary-color;
+  padding: 18px 22px;
+  border: 0;
+  outline: none;
+  color: white;
+  border-radius: 6px;
+  font-size: $font-p;
 }

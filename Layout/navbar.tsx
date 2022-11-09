@@ -34,6 +34,7 @@ export default function Navbar() {
 const NavWrapper = styled.nav`
   position: sticky;
   top: 0;
+  z-index: 99;
   background-color: #fff;
   .navbar {
     display: flex;

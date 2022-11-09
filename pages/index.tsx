@@ -6,6 +6,7 @@ import Hero from '../components/Home/Hero';
 import PlatformFor from '../components/Home/PlatformFor';
 import client from '../client';
 import groq from 'groq';
+import Experience from '../components/Home/Experience';
 
 const Home: NextPage = ({ posts }) => {
   console.log(posts);
@@ -15,6 +16,7 @@ const Home: NextPage = ({ posts }) => {
       <Hero posts={posts} />
       <PlatformFor />
       <BlogpostSection posts={posts} />
+      <Experience />
     </>
   );
 };
