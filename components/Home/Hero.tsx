@@ -10,7 +10,13 @@ export default function Hero({ posts }) {
   const [current, setCurrent] = useState(0);
   const [fade, setFade] = useState(1);
 
-  const blogposts = posts.map((post, index: number) => {
+  const blogposts: {
+    title: string;
+    postedBy: Object;
+    image: string;
+    id: string;
+    slug: string;
+  }[] = posts.map((post, index: number) => {
     return {
       title: post.title,
       postedBy: {
@@ -87,7 +93,7 @@ export default function Hero({ posts }) {
                 {_.truncate(blogposts[current].title, { length: 30 })}
               </h1>
               <div className='link-with-arrow'>
-                <Link href={blogposts[current].slug} className='link'>
+                <Link href={`blog/${blogposts[current].slug}`} className='link'>
                   Read More
                 </Link>
                 <ArrowRight />
@@ -143,6 +149,18 @@ const Wrapper = styled.div`
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 768px) {
+      flex-flow: column-reverse;
+      .col {
+        .img-wrapper {
+          width: 550px;
+          height: 260px !important;
+        }
+        .blog-content {
+          height: 300px !important;
+        }
+      }
+    }
     .col {
       .img-wrapper {
         width: 550px;
@@ -204,6 +222,7 @@ const Wrapper = styled.div`
       width: 100%;
     }
   }
+
   @keyframes fadeInLeft {
     0% {
       transform: translate(-100px, -50px);

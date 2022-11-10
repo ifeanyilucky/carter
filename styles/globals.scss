@@ -96,6 +96,7 @@ strong {
 .background-spiral {
   position: absolute;
   z-index: -1;
+  width: 90%;
 }
 .arrow {
   font-size: 30px;
@@ -199,4 +200,9 @@ strong {
   color: white;
   border-radius: 6px;
   font-size: $font-p;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background-color: #092c4e;
+  }
 }

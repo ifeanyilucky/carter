@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { LinkedIn, Facebook, Twitter } from '../components/icons';
 
 export default function Navbar() {
   return (
@@ -9,22 +10,36 @@ export default function Navbar() {
         <div className='logo'>Carter</div>
         <ul className='nav-list'>
           <li className='nav-item'>
-            <Link href='/'>Home</Link>
+            <Link className='nav__link' href='/'>
+              Home
+            </Link>
           </li>
           <li className='nav-item'>
-            <Link href='/library'>Library</Link>
+            <Link className='nav__link' href='/library'>
+              Library
+            </Link>
           </li>
           <li className='nav-item'>
-            <Link href='/about-us'>About us</Link>
+            <Link className='nav__link' href='/about-us'>
+              About us
+            </Link>
           </li>
           <li className='nav-item'>
-            <Link href='/submit-your-idea'>Submit your ideas</Link>
+            <Link className='nav__link' href='/submit-your-idea'>
+              Submit your ideas
+            </Link>
           </li>
         </ul>
-        <ul className='social-media'>
-          <li className='media-item'>facebook</li>
-          <li className='media-item'>twitter</li>
-          <li className='media-item'>whatsapp</li>
+        <ul className='social__media'>
+          <li className='media__item'>
+            <LinkedIn />
+          </li>
+          <li className='media__item'>
+            <Facebook />
+          </li>
+          <li className='media__item'>
+            <Twitter />
+          </li>
         </ul>{' '}
       </div>
     </NavWrapper>
@@ -36,6 +51,14 @@ const NavWrapper = styled.nav`
   top: 0;
   z-index: 99;
   background-color: #fff;
+  @media (max-width: 768px) {
+    position: static;
+    .navbar {
+      .nav-list {
+        display: none !important;
+      }
+    }
+  }
   .navbar {
     display: flex;
     flex-flow: row;
@@ -51,13 +74,23 @@ const NavWrapper = styled.nav`
       list-style: none;
       .nav-item {
         padding-right: 15px;
+        .nav__link {
+          color: #646464;
+          font-weight: 500;
+        }
       }
     }
-    .social-media {
+    .social__media {
       display: flex;
       flex-flow: row;
       justify-content: space-between;
       align-items: center;
+      list-style: none;
+      .media__item {
+        font-size: 27px;
+        color: #646464;
+        margin-left: 10px;
+      }
     }
   }
 `;

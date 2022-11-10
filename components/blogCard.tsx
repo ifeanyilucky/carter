@@ -12,10 +12,10 @@ export default function BlogCard({ post }): JSX.Element {
         <div className='card-footer'>
           <div className='postedBy'>
             <div className='user-profile'>
-              <img alt='...' className='user-img' />
+              <img src='..' alt='...' className='user-img' />
             </div>
             <div>
-              <p className='text-white'>Viola Manisa</p>
+              <p className='text-white'>Sharon Manisa</p>
               <p className='text-muted'>Verified writer</p>
             </div>
           </div>
@@ -42,10 +42,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  filter: grayscale(100%);
+  
   transition: filter 0.3s ease-in-out;
   &:hover {
-    filter: grayscale(0);
+    filter: grayscale(100%);
   }
 
   .card-footer {

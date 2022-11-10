@@ -1,11 +1,14 @@
 import client from '../../client';
 import groq from 'groq';
 import { PortableText } from '@portabletext/react';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { urlForImage } from '../../lib/sanity';
 import Header from '../../components/Blog/Header';
 import PostBody from '../../components/Blog/PostBody';
+import { ParsedUrlQuery } from 'querystring';
+import { Post } from '../../types';
 
-export default function Post({ post }) {
+export default function Post({ post }: any) {
   console.log(post);
 
   return (
@@ -30,7 +33,10 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
     "authorImage": author->image,
     body
   }`;
-export async function getStaticPaths() {
+interface IParams extends ParsedUrlQuery {
+  slug: string;
+}
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await client.fetch(
     groq`*[_type == "post" && defined(slug.current)][].slug.current`
   );
@@ -39,14 +45,14 @@ export async function getStaticPaths() {
     paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: true,
   };
-}
+};
 
-export async function getStaticProps(context: any) {
-  const { slug = '' } = context.params;
+export const getStaticProps: GetStaticProps = async (context: any) => {
+  const { slug = '' } = context.params as IParams;
   const post = await client.fetch(query, { slug });
   return {
     props: {
       post,
     },
   };
-}
+};
