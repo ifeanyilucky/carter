@@ -3,15 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { CloseIcon } from '../components/icons';
 
-interface ChildProps {
-  onOPen: Boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function MobileNav({
-  onOpen,
-  setOpen,
-}: ChildProps): JSX.Element {
+export default function MobileNav({ onOpen, setOpen }): JSX.Element {
   return (
     <Wrapper>
       <div className='nav__wrapper'>
@@ -46,13 +38,14 @@ export default function MobileNav({
 }
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   height: 100%;
   width: 100%;
+
   .nav__wrapper {
     background-color: #fff;
     width: 250px;
@@ -61,8 +54,22 @@ const Wrapper = styled.div`
     right: 0;
     height: 100%;
     border-top-left-radius: 50px;
+    transition: background 0.5s ease-in;
     ul {
       list-style: none;
+      margin-top: 4rem;
+      .nav-item {
+        margin-top: 1.3rem;
+
+        .nav__link {
+          color: #646464;
+        }
+      }
+    }
+    .close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
     }
   }
 `;

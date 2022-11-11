@@ -12,8 +12,9 @@ import MobileNav from './MobileNav';
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
+  const closeNav = () => setOpen(false);
   return (
-    <NavWrapper>
+    <NavWrapper open>
       <div className='navbar'>
         <div className='logo'>Carter</div>
         <ul className='nav-list'>
@@ -55,7 +56,7 @@ export default function Navbar() {
               <BarIcon />
             </div>
           </div>
-          <MobileNav onOpen={open} setOPen={setOpen} />
+          {!open ? '' : <MobileNav open={open} setOpen={setOpen} />}
         </div>
       </div>
     </NavWrapper>
@@ -66,7 +67,10 @@ const NavWrapper = styled.nav`
   position: sticky;
   top: 0;
   z-index: 99;
-  background-color: #fff;
+  /* background-color: #fff; */
+  position: sticky !important;
+  backdrop-filter: ${(open) => (open ? 'blur(20px)' : 'unset')};
+
   @media (max-width: 768px) {
     position: static;
     .navbar {
