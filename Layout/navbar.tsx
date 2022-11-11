@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { LinkedIn, Facebook, Twitter } from '../components/icons';
+import {
+  LinkedIn,
+  Facebook,
+  Twitter,
+  BarIcon,
+  CloseIcon,
+} from '../components/icons';
+import MobileNav from './MobileNav';
 
 export default function Navbar() {
+  const [open, setOpen] = useState<boolean>(false);
   return (
     <NavWrapper>
       <div className='navbar'>
@@ -40,7 +48,15 @@ export default function Navbar() {
           <li className='media__item'>
             <Twitter />
           </li>
-        </ul>{' '}
+        </ul>
+        <div className='mobile__nav'>
+          <div className='hamburger'>
+            <div className='open' onClick={() => setOpen(true)}>
+              <BarIcon />
+            </div>
+          </div>
+          <MobileNav onOpen={open} setOPen={setOpen} />
+        </div>
       </div>
     </NavWrapper>
   );
@@ -86,10 +102,18 @@ const NavWrapper = styled.nav`
       justify-content: space-between;
       align-items: center;
       list-style: none;
+      @media (max-width: 768px) {
+        display: none;
+      }
       .media__item {
         font-size: 27px;
         color: #646464;
         margin-left: 10px;
+      }
+    }
+    .mobile__nav {
+      @media (min-width: 768px) {
+        display: none;
       }
     }
   }

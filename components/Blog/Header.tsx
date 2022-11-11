@@ -30,6 +30,7 @@ const Wrapper = styled.div`
   .blog-title {
     width: 640px;
     margin: 0 auto;
+    max-width: 100%;
     .postedBy {
       margin: 3em 0;
     }

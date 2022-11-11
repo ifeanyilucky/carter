@@ -6,9 +6,8 @@ import { urlForImage } from '../../lib/sanity';
 import Header from '../../components/Blog/Header';
 import PostBody from '../../components/Blog/PostBody';
 import { ParsedUrlQuery } from 'querystring';
-import { Post } from '../../types';
 
-export default function Post({ post }: any) {
+export default function BlogPost({ post }: any) {
   console.log(post);
 
   return (

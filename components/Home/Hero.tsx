@@ -16,7 +16,7 @@ export default function Hero({ posts }) {
     image: string;
     id: string;
     slug: string;
-  }[] = posts.map((post, index: number) => {
+  }[] = posts.slice(0, 4).map((post, index: number) => {
     return {
       title: post.title,
       postedBy: {
@@ -163,7 +163,7 @@ const Wrapper = styled.div`
     }
     .col {
       .img-wrapper {
-        width: 550px;
+        width: 100%;
         height: 550px;
         border-radius: 10px !important;
         overflow: hidden;

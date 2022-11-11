@@ -36,4 +36,5 @@ export default function PostBody({ body }: any) {
 const Wrapper = styled.div`
   width: 850px;
   margin: 0 auto;
+  max-width: 100%;
 `;
