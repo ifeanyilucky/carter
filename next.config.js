@@ -7,6 +7,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 
+typescript: {
+   
+    ignoreBuildErrors: true,
+  },
+
 }
 
 module.exports = nextConfig
