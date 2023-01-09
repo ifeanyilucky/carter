@@ -5,7 +5,6 @@ import BlogpostSection from '../components/Home/BLogpostSection';
 import Hero from '../components/Home/Hero';
 import PlatformFor from '../components/Home/PlatformFor';
 import client from '../client';
-import groq from 'groq';
 import Experience from '../components/Home/Experience';
 
 const Home: NextPage = ({ posts }) => {

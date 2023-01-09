@@ -6,7 +6,7 @@ export default function Header({ title, image, authorName, authorImage }) {
     <Wrapper>
       <div className='container'>
         <div className='blog-title'>
-          <h1>{title}</h1>
+          <h1 className='display-1'>{title}</h1>
           <div className='postedBy'>
             <div className='user-profile'>
               <img
@@ -28,9 +28,10 @@ export default function Header({ title, image, authorName, authorImage }) {
 
 const Wrapper = styled.div`
   .blog-title {
-    width: 640px;
+    width: 908px;
     margin: 0 auto;
     max-width: 100%;
+    /* min-width: 100%; */
     .postedBy {
       margin: 3em 0;
     }

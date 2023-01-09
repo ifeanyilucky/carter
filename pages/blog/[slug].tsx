@@ -6,12 +6,15 @@ import { urlForImage } from '../../lib/sanity';
 import Header from '../../components/Blog/Header';
 import PostBody from '../../components/Blog/PostBody';
 import { ParsedUrlQuery } from 'querystring';
+import RelatedPost from '../../components/Blog/RelatedPost';
+import Page from '../../components/Page';
 
 export default function BlogPost({ post }: any) {
   console.log(post);
 
   return (
     <div className='container'>
+      <Page description={post.title} title={post.title} />
       <Header
         title={post.title}
         image={post.mainImage}
@@ -19,6 +22,7 @@ export default function BlogPost({ post }: any) {
         authorImage={post.authorImage}
       />
       <PostBody body={post.body} />
+      <RelatedPost />
     </div>
   );
 }

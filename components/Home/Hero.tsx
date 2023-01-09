@@ -163,12 +163,19 @@ const Wrapper = styled.div`
     }
     .col {
       .img-wrapper {
-        width: 100%;
+        width: 500px;
+        min-width: 100%;
         height: 550px;
         border-radius: 10px !important;
         overflow: hidden;
         max-width: 100%;
+      }
+      .featured-img {
+        overflow: hidden;
         object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
       }
       .ctrl {
         display: flex;
@@ -215,11 +222,6 @@ const Wrapper = styled.div`
         transition: ease 1000ms;
         animation: fadeInRight 0.5s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
-    }
-
-    .img-wrapper {
-      height: 300px;
-      width: 100%;
     }
   }
 
