@@ -8,8 +8,6 @@ import client from '../client';
 import Experience from '../components/Home/Experience';
 
 const Home: NextPage = ({ posts }) => {
-  console.log(posts);
-
   return (
     <>
       <Hero posts={posts} />

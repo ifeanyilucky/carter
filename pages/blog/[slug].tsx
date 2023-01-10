@@ -10,8 +10,6 @@ import RelatedPost from '../../components/Blog/RelatedPost';
 import Page from '../../components/Page';
 
 export default function BlogPost({ post }: any) {
-  console.log(post);
-
   return (
     <div className='container'>
       <Page description={post.title} title={post.title} />
@@ -46,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 };
 

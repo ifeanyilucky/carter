@@ -3,15 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 
- eslint: {
+  eslint: {
     ignoreDuringBuilds: true,
   },
 
-typescript: {
-   
+  typescript: {
     ignoreBuildErrors: true,
   },
+};
 
-}
-
-module.exports = nextConfig
+module.exports = nextConfig;

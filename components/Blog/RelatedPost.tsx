@@ -1,7 +1,6 @@
 import client from '../../client';
 
 export default function RelatedPost({ posts }) {
-  console.log(posts);
   return (
     <div>
       <h4>More from </h4>
@@ -13,7 +12,7 @@ export default function RelatedPost({ posts }) {
 
 export const getStaticProps = async () => {
   const query = await client.fetch(`*[_type == "post"]`);
-  console.log(query);
+
   if (!query.length || !query) {
     return {
       props: {
