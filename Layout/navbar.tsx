@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Link from 'next/link';
 import {
@@ -11,6 +12,10 @@ import {
 import MobileNav from './MobileNav';
 
 export default function Navbar() {
+  const { pathname } = useRouter();
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
   const [open, setOpen] = useState<boolean>(false);
   const closeNav = () => setOpen(false);
   return (
@@ -24,8 +29,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav__link' href='/library'>
-              Library
+            <Link className='nav__link' href='/library/artist'>
+              Artist Library
             </Link>
           </li>
           <li className='nav-item'>
@@ -34,7 +39,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav__link' href='/submit-your-idea'>
+            <Link className='nav__link' href='/submit-your-ideas'>
               Submit your ideas
             </Link>
           </li>

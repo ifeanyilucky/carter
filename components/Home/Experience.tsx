@@ -30,6 +30,7 @@ export default function Experience(): JSX.Element {
 }
 const Wrapper = styled.section`
   margin: 5rem 0;
+
   .container {
     .row {
       display: flex;
@@ -40,6 +41,10 @@ const Wrapper = styled.section`
       .col-6 {
         flex: 0 0 50%;
         max-width: 50%;
+        @media (max-width: 768px) {
+          max-width: 100% !important;
+          flex: 1;
+        }
         .contentWrapper {
           position: relative;
           width: 100%;

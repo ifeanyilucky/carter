@@ -17,8 +17,13 @@ export default function MobileNav({ onOpen, setOpen }): JSX.Element {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav__link' href='/library'>
-              Library
+            <Link className='nav__link' href='/library/artist'>
+              Artist Library
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav__link' href='/library/technology'>
+              Tech art Library
             </Link>
           </li>
           <li className='nav-item'>
@@ -27,7 +32,7 @@ export default function MobileNav({ onOpen, setOpen }): JSX.Element {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav__link' href='/submit-your-idea'>
+            <Link className='nav__link' href='/submit-your-ideas'>
               Submit your ideas
             </Link>
           </li>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import { BackgroundSpiral } from '../components/icons';
 
@@ -12,13 +13,20 @@ export default function Footer() {
             className='streamline'
           />
           <div className='footerCol'>
-            <h2>The Art Blog</h2>
+            <h2 className='display-4'>The Art Blog</h2>
             <div className='item__row'>
               <div className='item-col'>
                 <p>Library</p>
-                <div className='footer-item'>Artist</div>
-                <div className='footer-item'>Tech</div>
-                <p className='text-muted'>Copyright &copy; 2023 Carter</p>
+
+                <Link className='footer-item' href='/library/artist'>
+                  Artist
+                </Link>
+
+                <Link className='footer-item' href='/library/technology'>
+                  Tech
+                </Link>
+
+                <p className='text-muted'>Copyright &copy; 2023 Carter Rose</p>
                 <p className='text-muted'>Made with 💚 by Codack</p>
               </div>
               <div className='item-col'>
@@ -29,7 +37,7 @@ export default function Footer() {
             </div>
           </div>
           <div className='footerCol'>
-            <h1>Carter.</h1>
+            <h1 className='display-2'>Carter.</h1>
           </div>
         </div>
       </div>
@@ -39,7 +47,11 @@ export default function Footer() {
 
 const Wrapper = styled.footer`
   background-color: #0d3b66;
-  color: #fff;
+  color: #fff !important;
+  h1,
+  h2 {
+    color: #fff !important;
+  }
   padding: 5rem 0;
   .footerRow {
     display: flex;
@@ -58,8 +70,12 @@ const Wrapper = styled.footer`
         justify-content: space-between;
 
         .item-col {
+          color: #fff !important;
           p {
-            font-weight: 500;
+            font-weight: 400;
+          }
+          .footer-item {
+            color: white;
           }
         }
       }
