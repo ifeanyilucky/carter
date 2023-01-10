@@ -3,10 +3,12 @@ import LibraryHero from '../../Layout/LibraryHero';
 import styled from 'styled-components';
 import client from '../../client';
 import BlogpostSection from '../../components/Home/BLogpostSection';
+import Page from '../../components/Page';
 
 const Technology: NextPage = ({ posts }) => {
   return (
     <>
+      <Page title='Technology Library' />
       <LibraryHero
         title={'Technology'}
         description='This is a Technology lirbary'

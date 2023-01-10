@@ -3,11 +3,13 @@ import LibraryHero from '../../Layout/LibraryHero';
 import styled from 'styled-components';
 import client from '../../client';
 import BlogpostSection from '../../components/Home/BLogpostSection';
+import Page from '../../components/Page';
 
 const Artist: NextPage = ({ posts }) => {
   console.log(posts);
   return (
     <>
+      <Page title='Artist Library' />
       <LibraryHero title={'Artist'} description='This is an Artist lirbary' />
       <BlogpostSection posts={posts} />
     </>
